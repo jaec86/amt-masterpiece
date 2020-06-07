@@ -1,0 +1,55 @@
+.move-right {
+    left: 100%;
+    animation-name: moveright;
+    animation-timing-function: ease-in-out;
+    animation-duration: 1500ms;
+}
+
+.move-left {
+    left: -100%;
+    animation-name: moveleft;
+    animation-timing-function: ease-in-out;
+    animation-duration: 1500ms;
+}
+
+.move-right-delay {
+    left: 100%;
+    animation-name: moverightdelay;
+    animation-timing-function: ease-in-out;
+    animation-duration: 1500ms;
+}
+
+.move-left-delay {
+    left: 100%;
+    animation-name: moveleftdelay;
+    animation-timing-function: ease-in-out;
+    animation-duration: 1500ms;
+}
+
+@keyframes moveright {
+    0% { left: -100%; }
+    33.333% { left: -100%; }
+    66.667% { left: 100%; }
+    100% { left: 100%; }
+}
+
+@keyframes moverightdelay {
+    0% { left: -100%; }
+    33.333% { left: 0%; }
+    66.667% { left: 0%; }
+    100% { left: 100%; }
+}
+
+@keyframes moveleft {
+    0% { left: 100%; }
+    33.333% { left: 100%; }
+    66.667% { left: -100%; }
+    100% { left: -100%; }
+}
+
+@keyframes moveleftdelay {
+    0% { left: 100%; }
+    33.333% { left: 0%; }
+    66.667% { left: 0%; }
+    100% { left: -100%; }
+}
