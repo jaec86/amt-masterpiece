@@ -5,6 +5,48 @@
 
 @tailwind base;
 
+h1 {
+    @apply relative
+    py-2
+    font-bold
+    text-xl
+    uppercase
+    tracking-wider;
+}
+
+h1::before {
+    content: '';
+    @apply absolute
+    bottom-0
+    mb-2
+    w-12
+    border-t-2
+    border-gray-500;
+}
+
+h2 {
+    @apply py-2
+    font-bold
+    uppercase
+    tracking-wider;
+}
+
+p {
+    @apply py-2;
+}
+
+a {
+    @apply underline
+    transition-all
+    duration-500;
+}
+
+a:hover,
+a:focus {
+    @apply text-gray-800
+    outline-none;
+}
+
 @tailwind components;
 
 @tailwind utilities;
