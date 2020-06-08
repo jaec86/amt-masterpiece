@@ -1,11 +1,11 @@
 <template>
-  <div class="overflow-scroll scrolling-touch">
-    <div class="container mx-auto">
-      <div class="p-6" :style="{ minHeight: 'calc(100vh - 72px)' }">
+  <div>
+    <div class="container mx-auto lg:max-w-screen-lg">
+      <div class="main">
         <h1>Fragment Shaders</h1>
       </div>
-      <div class="fixed top-0 left-0 w-full pointer-events-none" :style="{ height: 'calc(100vh - 72px)', boxShadow: 'inset 0 0 0.75rem 1rem #e2e8f0' }"></div>
-      <div class="sticky bottom-0 flex justify-between items-center px-3 py-6 bg-gray-300">
+      <div class="main-shadow"></div>
+      <div class="nav">
         <div class="px-3 w-1/3">
           <router-link to="/" class="flex items-center text-gray-600 hover:text-gray-800 focus:text-gray-800 outline-none transition-all duration-500">
             <svg aria-hidden="true" focusable="false" data-prefix="fad" data-icon="arrow-left" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="inline-block w-4">

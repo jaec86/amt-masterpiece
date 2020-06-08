@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div style="background-color: #000">
     <canvas ref="visualizer"></canvas>
   </div>
 </template>

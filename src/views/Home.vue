@@ -1,7 +1,7 @@
 <template>
   <div class="overflow-scroll scrolling-touch">
-    <div class="container relative mx-auto lg:max-w-screen-lg">
-      <div class="p-6" :style="{ minHeight: 'calc(100vh - 72px)' }">
+    <div class="container mx-auto lg:max-w-screen-lg">
+      <div class="main">
         <h1>AMT Masterpiece</h1>
         <p>This is the final project for the course <strong>Art, Mathemathics and Technology</strong>, which is part of the <strong>Interaction Technology</strong> master at the <strong>University of Twente</strong>. The main idea of this project is to use some of the concepts discussed during the course, combine them and create a final piece. The result piece is an audio visualizer based on several movie posters and their respective soundtrack, where the images are displayed with a dynamic particle system using a halftone pattern. Each particle will displace on the z-axis based on the sound frequency extracted from the soundtrack playing, while the x-axis and y-axis are defined by a noise pattern.</p>
         <p>This document also serves as a step-by-step guide for the final piece, providing a detailed explanation of the theory behind each topic. The sections of this document are as folows:</p>
@@ -22,8 +22,8 @@
         <p class="flex pl-6"><span style="min-width: 1.5rem">5.</span><span>Sound: Generative Melodies and Webcam Audio Visualizer (<a href="https://jaec86.github.io/amt-workshop5/" target="_blank">demo</a> and <a href="https://github.com/jaec86/amt-workshop5" target="_blank">code</a>)</span></p>
         <p>This project uses a javascript package called <a href="https://threejs.org/" target="_blank" class="font-bold">Three.js</a>, which simplifies the manipulation of 2D and 3D graphics on a web browser. Also the website is developed with a frontend framework called <a href="https://vuejs.org/" target="_blank" class="font-bold">Vue.js</a> and a CSS utility-first framework called <a href="https://tailwindcss.com/" target="_blank" class="font-bold">Tailwind</a>.</p>
       </div>
-      <div class="fixed top-0 left-0 w-full pointer-events-none" :style="{ height: 'calc(100vh - 72px)', boxShadow: 'inset 0 0 0.75rem 1rem #e2e8f0' }"></div>
-      <div class="sticky bottom-0 flex justify-between items-center px-3 py-6 bg-gray-300">
+      <div class="main-shadow"></div>
+      <div class="nav">
         <div class="px-3 w-1/3"></div>
         <div class="px-3 w-1/3 text-center">
           <router-link to="/" class="text-gray-600">
