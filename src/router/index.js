@@ -41,6 +41,12 @@ Vue.use(VueRouter)
     name: 'Demo',
     meta: { order: 5 },
     component: () => import(/* webpackChunkName: "demo" */ '../views/Demo.vue')
+  },
+  {
+    path: '*',
+    name: 'NotFound',
+    meta: { order: 6 },
+    component: () => import(/* webpackChunkName: "demo" */ '../views/NotFound.vue')
   }
 ]
 
@@ -51,7 +57,6 @@ const router = new VueRouter({
 })
 
 router.beforeEach((to, from, next) => {
-  // store.commit('setOverlayLeft', to.meta.order < from.meta.order)
   let side = to.meta.order >= from.meta.order ? 'left': 'right'
   store.dispatch('moveOverlay', side)
   next()
