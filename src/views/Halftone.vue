@@ -1,11 +1,45 @@
 <template>
   <div class="overflow-scroll scrolling-touch">
     <div class="container mx-auto">
-      <div class="p-6" :style="{ minHeight: 'calc(100vh - 72px)' }">
+      <div class="main">
         <h1>Halftone Pattern</h1>
+        <p>A halftone pattern is an image formed with discrete dots rather than continuous tones. When viewed from a distance, the dots blur together, creating the illusion of continuous lines and shapes. This pattern creates some white space between dots, making it more efficient to render. Because of this halftone pattern is comonly used as printing technique as it results in less ink used. Like any image the quality will depend heavely in its resolution, so the higher the resolution the more details the resulting image will have.</p>
+        <p>
+          <img src="/images/halftone_color.png" alt="Halftone Color Example" class="mx-auto max-w-sm" />
+        </p>
+        <p>Usually to print a full color halftone pattern the size of the dots varies depending on the red, green, blue and black values. The image above is an example of how a full color halftone pattern can be obtained. For the masterpiece instead of using the full color of a pixel, the grayscale value will be used.</p>
+        <p>There are three common methods to compute the grayscale value: lightness, average and luminosity. The three methods produce a very similar result, even though the luminosity method is proven to work best overall, so this will be the method used in the masterpiece. The formula for the luminosity method is <code>0.21R + 0.72G + 0.07B</code>.</p>
+        <br>
+        <h2>Masterpiece Implementation</h2>
+        <p>To implement a halftone pattern to the particle system only the fragment shader needs to be updated. The first thing to do is get the grayscale value of the pixel based on the texture position. Then instead of assigning the color of the pixel, a new color is set with the green, red, and blue value set as the grayscale. Finally the alpha value of this new color will also be based on the distance from the center, but this time the radius will be <code>0.5*gray</code>.</p>
+        <p>
+          <pre class="px-6 rounded bg-gray-800 text-sm text-gray-100 overflow-x-scroll scrolling-touch"><code>
+precision highp float;
+
+uniform sampler2D uTexture;
+
+varying vec2 vPUv;
+varying vec2 vUv;
+
+void main {
+  vec4 colA = texture2D(uTexture, vPUv);
+  float gray = colA.r * 0.21 + colA.g * 0.71 + colA.b * 0.07;
+
+  vec4 colB = vec4(gray, gray, gray, 1.0);
+  float dist = 0.5 * gray - distance(vUv, vec2(0.5));
+  colB.a = smoothstep(0.0, 0.3, dist);
+
+  gl_FragColor = colB;
+}
+          </code></pre>
+        </p>
+        <div class="py-2">
+          <img src="/images/result2.jpg" alt="Custom Shader Implementation" class="mx-auto" />
+        </div>
+        <p>The image above is the result of the updated shaders. The particle systems is starting to look better but the spacing is not really taken into consideration, even though this was made on purpose. In order to consider the spacing and add some motion to the particles Perlin Noise will be applied in the next section.</p>
       </div>
-      <div class="fixed top-0 left-0 w-full pointer-events-none" :style="{ height: 'calc(100vh - 72px)', boxShadow: 'inset 0 0 0.75rem 1rem #e2e8f0' }"></div>
-      <div class="sticky bottom-0 flex justify-between items-center px-3 py-6 bg-gray-300">
+      <div class="main-shadow"></div>
+      <div class="nav">
         <div class="px-3 w-1/3">
           <router-link to="/shaders" class="flex items-center text-gray-600 hover:text-gray-800 focus:text-gray-800 outline-none transition-all duration-500">
             <svg aria-hidden="true" focusable="false" data-prefix="fad" data-icon="arrow-left" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="inline-block w-4">

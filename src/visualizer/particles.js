@@ -62,9 +62,9 @@ export default class Particles {
     const threshold = 34
 
     for (let i = 0; i < pointCount; i++) {
-      // if (originalColors[i * 4] > threshold) {
+      if (originalColors[i * 4] > threshold) {
         pointsVisible++
-      // }
+      }
     }
 
     const uniforms = {
@@ -110,7 +110,7 @@ export default class Particles {
 
     for (let i = 0, j = 0; i < pointCount; i++) {
       if (originalColors[i * 4] <= threshold) {
-        // continue
+        continue
       }
 
       offsets[j * 3] = i % this.width

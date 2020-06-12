@@ -63,8 +63,13 @@ void main() {
 
     vUv = uv;
     vPUv = offset.xy / uTextureSize;
+
+    vec4 colA = texture2D(uTexture, vPUv);
+    float grey = colA.r * 0.21 + colA.g * 0.71 + colA.b * 0.07;
+
     vec3 displaced = offset;
     displaced.xy -= uTextureSize * 0.5;
+
     vec4 mvPosition = modelViewMatrix * vec4(displaced, 1.0);
     mvPosition.xyz += position * uSize;
 

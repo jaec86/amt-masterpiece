@@ -28,7 +28,9 @@ void main() {
     // gl_FragColor = color;
 
     vec4 colA = texture2D(uTexture, vPUv);
-    float dist = 0.5 - distance(vUv, vec2(0.5));
-    colA.a = smoothstep(0.0, 0.3, dist);
-    gl_FragColor = colA;
+    float grey = colA.r * 0.21 + colA.g * 0.71 + colA.b * 0.07;
+    vec4 colB = vec4(grey, grey, grey, 1.0);
+    float dist = 0.5 * grey - distance(vUv, vec2(0.5));
+    colB.a = smoothstep(0.0, 0.3, dist);
+    gl_FragColor = colB;
 } 

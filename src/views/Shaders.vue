@@ -100,7 +100,7 @@ void main {
 }
           </code></pre>
         </p>
-        <p>The fragment shader will receive the image as uniform and the position and UVs as varying variables from the vertex shader. From the texture and position the color of the pixel is extracted. To make the circle shape the the alpha value of the color will be <code>0</code> (making it transparent) if the distance of the pixel from the center is greater than <code>0.5</code></p>
+        <p>The fragment shader will receive the image as uniform and the position and UVs as varying variables from the vertex shader. The color of the pixel is extracted from the texture and position . To make the circle shape the the alpha value of the color will be <code>0</code> (making it transparent) if the distance of the pixel from the center is greater than <code>0.5</code>.</p>
         <p>
           <pre class="px-6 rounded bg-gray-800 text-sm text-gray-100 overflow-x-scroll scrolling-touch"><code>
 precision highp float;
@@ -122,7 +122,7 @@ void main {
           </code></pre>
         </p>
         <div class="py-2">
-          <img src="/images/result1.jpg" class="mx-auto" />
+          <img src="/images/result1.jpg" alt="Custom Shader Implementation" class="mx-auto" />
         </div>
         <p>The image above is an example of the resulting canvas displayed. For now the circle shape of the particles is barely visible but this will be fixed applying a halftone pattern in the next section.</p>
       </div>
