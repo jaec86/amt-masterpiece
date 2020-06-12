@@ -5,7 +5,7 @@
         <h1>AMT Masterpiece</h1>
         <p>This is the final project for the course <strong>Art, Mathemathics and Technology</strong>, which is part of the <strong>Interaction Technology</strong> master at the <strong>University of Twente</strong>. The main idea of this project is to use some of the concepts discussed during the course, combine them and create a final piece. The result piece is an audio visualizer based on several movie posters and their respective soundtrack, where the images are displayed with a dynamic particle system using a halftone pattern. Each particle will displace on the z-axis based on the sound frequency extracted from the soundtrack playing, while the x-axis and y-axis are defined by a noise pattern.</p>
         <p>This document also serves as a step-by-step guide for the final piece, providing a detailed explanation of the theory behind each topic. The sections of this document are as folows:</p>
-        <p class="flex pl-6"><span style="min-width: 1.5rem">1.</span><router-link to="/shader">Fragment Shader</router-link></p>
+        <p class="flex pl-6"><span style="min-width: 1.5rem">1.</span><router-link to="/shaders">WebGL Shaders</router-link></p>
         <p class="flex pl-6"><span style="min-width: 1.5rem">2.</span><router-link to="/halftone">Halftone Pattern</router-link></p>
         <p class="flex pl-6"><span style="min-width: 1.5rem">3.</span><router-link to="/noise">Perlin Noise</router-link></p>
         <p class="flex pl-6"><span style="min-width: 1.5rem">4.</span><router-link to="/sound">Sound Frequency</router-link></p>
@@ -36,8 +36,8 @@
           </router-link>
         </div>
         <div class="flex flex-row-reverse px-3 w-1/3">
-          <router-link to="/shader" class="flex items-center text-gray-600">
-            <span class="mr-3 font-bold text-sm uppercase tracking-wide">Shader</span>
+          <router-link to="/shaders" class="flex items-center text-gray-600">
+            <span class="mr-3 font-bold text-sm uppercase tracking-wide">Shaders</span>
             <svg aria-hidden="true" focusable="false" data-prefix="fad" data-icon="arrow-right" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="inline-block w-4">
               <g>
                 <path fill="currentColor" d="M24 215h286.4l41.6 41-41.59 41H24c-13.3 0-24-11-24-24.63v-32.82A24.22 24.22 0 0 1 24 215z" class="opacity-50"></path>

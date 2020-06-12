@@ -5,6 +5,7 @@ module.exports = {
   ],
   theme: {
     fontFamily: {
+      'mono': ['monoscpace', 'monospace'],
       'raleway': ['Raleway', 'sans-serif']
     },
   }

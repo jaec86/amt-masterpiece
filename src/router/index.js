@@ -13,10 +13,10 @@ Vue.use(VueRouter)
     component: Home
   },
   {
-    path: '/shader',
-    name: 'Shader',
+    path: '/shaders',
+    name: 'Shaders',
     meta: { order: 1 },
-    component: () => import(/* webpackChunkName: "shader" */ '../views/Shader.vue')
+    component: () => import(/* webpackChunkName: "shader" */ '../views/Shaders.vue')
   },
   {
     path: '/halftone',
