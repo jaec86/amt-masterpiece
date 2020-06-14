@@ -16,11 +16,11 @@ float noise(float x) {
         </p>
         <p>The function above is a linear implementation of the Perlin Noise algorithm. To get a 2D noise value, instead of interpolating between two points of a line, it interpolates the four corners that compose the area of a plane  like (<code>fract(st)</code>, <code>fract(st) + vec2(1.0, 0.0)</code>, <code>fract(st) + vec2(0.0, 1.0)</code> and <code>fract(st) + vec2(1.0, 1.0)</code>). The same goes for 3D, noise where it interpolates between the eight cornes of a cube. This technique is all about interpolating random values.</p>
         <p>
-          <img src="/images/3d_noise.png" alt="3D Interpolation" class="mx-auto">
+          <img src="images/3d_noise.png" alt="3D Interpolation" class="mx-auto">
         </p>
         <p>This algorithm was improved in 2001 by Perlin himself. Classic noise algorithm for N dimensions smoothly interpolates 2 to the N points. This means that for 2D and 3D it needs to interpolate 4 and 8 points, and this will increase exponentially. But Perlin noticed that instead of using a square to fill a space is more efficient to use an equilateral triangle, which is the simplest 2D shape. The squared grid is replaced by the simplex grid of equillateral triangles, which means that for N dimensions only N + 1 corners are computed. But when dividing a square by two triangles, the resulting triangles are not equilateral but isosceles, so the grid is skewed until every triangle is equilateral.</p>
         <p>
-          <img src="/images/simplex_grid.png" alt="Simplex Grid" class="mx-auto" />
+          <img src="images/simplex_grid.png" alt="Simplex Grid" class="mx-auto" />
         </p>
         <br>
         <h2>Masterpiece Implementation</h2>
@@ -120,8 +120,8 @@ void main {
           </code></pre>
         </p>
         <p class="flex items-center mx-auto max-w-screen-lg">
-          <img src="/images/result3_1.jpg" class="mx-auto w-1/2" />
-          <img src="/images/result3-2.jpg" class="mx-auto w-1/2" />
+          <img src="images/result3_1.jpg" class="mx-auto w-1/2" />
+          <img src="images/result3-2.jpg" class="mx-auto w-1/2" />
         </p>
         <p>Above the image on the left side is the result of applying noise in the coordinates of the particles, including the size. On the right side is the result of applying noise to the circle shape of the particle. In the next section some more motion will be included based on the audio frequency.</p>
       </div>

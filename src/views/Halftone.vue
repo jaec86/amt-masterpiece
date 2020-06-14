@@ -5,7 +5,7 @@
         <h1>Halftone Pattern</h1>
         <p>A halftone pattern is an image formed with discrete dots rather than continuous tones. When viewed from a distance, the dots blur together, creating the illusion of continuous lines and shapes. This pattern creates some white space between dots, making it more efficient to render. Because of this halftone pattern is comonly used as printing technique as it results in less ink used. Like any image the quality will depend heavely in its resolution, so the higher the resolution the more details the resulting image will have.</p>
         <p>
-          <img src="/images/halftone_color.png" alt="Halftone Color Example" class="mx-auto max-w-sm" />
+          <img src="images/halftone_color.png" alt="Halftone Color Example" class="mx-auto max-w-sm" />
         </p>
         <p>Usually to print a full color halftone pattern the size of the dots varies depending on the red, green, blue and black values. The image above is an example of how a full color halftone pattern can be obtained. For the masterpiece instead of using the full color of a pixel, the grayscale value will be used. The brighter the pixel is, the larger the particle is.</p>
         <p>There are three common methods to compute the grayscale value: lightness, average and luminosity. The three methods produce a very similar result, even though the luminosity method is proven to work best overall, so this will be the method used in the masterpiece. The formula for the luminosity method is <code>0.21R + 0.72G + 0.07B</code>.</p>
@@ -34,7 +34,7 @@ void main {
           </code></pre>
         </p>
         <div class="py-2">
-          <img src="/images/result2.jpg" alt="Custom Shader Implementation" class="mx-auto" />
+          <img src="images/result2.jpg" alt="Custom Shader Implementation" class="mx-auto" />
         </div>
         <p>The image above is the result of the updated shaders. The particle system is starting to look better but the spacing is not really taken into consideration, even though this was intended. In order to consider the spacing and add some motion to the particles Perlin Noise will be applied in the next section.</p>
       </div>

@@ -7,11 +7,11 @@
         <p>What sets WebGL apart from common drawing tools is that every pixel is drawn at the same time in parallel using threads. In the <a href="https://thebookofshaders.com" target="_blank">Book of Shaders</a> the CPU process in a computer is described as a factory line where every task pass through a pipe and is done in a sequence. On the other hand WebGL is desdribed as a set of pipes, known as threads, to process every pixel in parallel. This is very convenient because the function to draw each pixel can increase its complexity without affecting its performance and this is know as GPU (Graphic Processor Unit).</p>
         <div class="flex items-center mx-auto py-2 w-full max-w-screen-md">
           <div>
-            <img src="/images/cpu_pipe.png" alt="Book of Shaders CPU" />
+            <img src="images/cpu_pipe.png" alt="Book of Shaders CPU" />
             <div class="font-bold text-xs uppercase tracking-wider text-center">CPU</div>
           </div>
           <div>
-            <img src="/images/gpu_pipes.png" alt="Book of Shaders GPU" />
+            <img src="images/gpu_pipes.png" alt="Book of Shaders GPU" />
             <div class="font-bold text-xs uppercase tracking-wider text-center">GPU</div>
           </div>
         </div>
@@ -122,7 +122,7 @@ void main {
           </code></pre>
         </p>
         <div class="py-2">
-          <img src="/images/result1.jpg" alt="Custom Shader Implementation" class="mx-auto" />
+          <img src="images/result1.jpg" alt="Custom Shader Implementation" class="mx-auto" />
         </div>
         <p>The image above is an example of the resulting canvas displayed. For now all the particles have the same size but this will be fixed by applying a halftone pattern in the next section.</p>
       </div>
