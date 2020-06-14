@@ -37,10 +37,10 @@ export default class Particles {
       this.audio.setBuffer(buffer)
       this.audio.setLoop(true)
       this.audio.setVolume(0.5)
-      // this.audio.play()
+      this.audio.play()
     })
 
-    // this.analyser = new THREE.AudioAnalyser(this.audio, 2048)
+    this.analyser = new THREE.AudioAnalyser(this.audio, 2048)
   }
 
   initPoints () {

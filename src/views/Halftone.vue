@@ -11,7 +11,7 @@
         <p>There are three common methods to compute the grayscale value: lightness, average and luminosity. The three methods produce a very similar result, even though the luminosity method is proven to work best overall, so this will be the method used in the masterpiece. The formula for the luminosity method is <code>0.21R + 0.72G + 0.07B</code>.</p>
         <br>
         <h2>Masterpiece Implementation</h2>
-        <p>To implement a halftone pattern to the particle system only the fragment shader needs to be updated. The first thing to do is get the grayscale value of the pixel based on the texture position. Then instead of assigning the color of the pixel, a new color is set with the green, red, and blue value set as the grayscale. Finally the alpha value of this new color will also be based on the distance from the center, but this time the radius will be <code>0.5*gray</code>.</p>
+        <p>To implement a halftone pattern to the particle system only the fragment shader needs to be updated. The first thing to do is get the grayscale value of the pixel based on the texture position. Then instead of assigning the color of the pixel, a new color is set with the green, red, and blue value set as the grayscale. Finally the alpha value of this new color will be also based on the distance from the center, but this time the radius will be <code>0.5*gray</code>.</p>
         <p>
           <pre class="px-6 rounded bg-gray-800 text-sm text-gray-100 overflow-x-scroll scrolling-touch"><code>
 precision highp float;
@@ -22,21 +22,20 @@ varying vec2 vPUv;
 varying vec2 vUv;
 
 void main {
-  vec4 colA = texture2D(uTexture, vPUv);
-  float gray = colA.r * 0.21 + colA.g * 0.71 + colA.b * 0.07;
+  vec4 originalColor = texture2D(uTexture, vPUv);
+  float gray = originalColor.r * 0.21 + originalColor.g * 0.71 + originalColor.b * 0.07;
 
-  vec4 colB = vec4(gray, gray, gray, 1.0);
   float dist = 0.5 * gray - distance(vUv, vec2(0.5));
-  colB.a = smoothstep(0.0, 0.3, dist);
+  float alpha = smoothstep(0.0, 0.3, dist);
 
-  gl_FragColor = colB;
+  gl_FragColor = vec4(vec3(gray), alpha);
 }
           </code></pre>
         </p>
         <div class="py-2">
           <img src="/images/result2.jpg" alt="Custom Shader Implementation" class="mx-auto" />
         </div>
-        <p>The image above is the result of the updated shaders. The particle systems is starting to look better but the spacing is not really taken into consideration, even though this was made on purpose. In order to consider the spacing and add some motion to the particles Perlin Noise will be applied in the next section.</p>
+        <p>The image above is the result of the updated shaders. The particle system is starting to look better but the spacing is not really taken into consideration, even though this was intended. In order to consider the spacing and add some motion to the particles Perlin Noise will be applied in the next section.</p>
       </div>
       <div class="main-shadow"></div>
       <div class="nav">

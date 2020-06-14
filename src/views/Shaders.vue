@@ -4,7 +4,7 @@
       <div class="main">
         <h1>WebGL</h1>
         <p>Usually using vector tools like Illustrator or even paper and pencil, the drawing process starts by tracing a series of dots, lines and shapes until the desire image is composed. This is a linear process where every task is done after another, and doing it this way on a computer may require some heavy processing power. This is not optimal for an application running on a browser and because of this WebGL (Web Graphics Library) was created, which is a rasterization engine for Javascript to compose and manipulate 2D and 3D graphics.</p>
-        <p>What sets WebGL apart from common drawing tools is that every pixel is drawn at the same time in parallel using threads. In the <a href="https://thebookofshaders.com" target="_blank">Book of Shaders</a> the CPU process in a computer is described as a factory line where every task pass through a pipe and is done in a sequence. On the other hand WebGL is desdribed as set of pipes, known as threads, to process every pixel in parallel. This is very convenient because the function to draw each pixel can increase its complexity without affecting its performance and this is know as GPU (Graphic Processor Unit).</p>
+        <p>What sets WebGL apart from common drawing tools is that every pixel is drawn at the same time in parallel using threads. In the <a href="https://thebookofshaders.com" target="_blank">Book of Shaders</a> the CPU process in a computer is described as a factory line where every task pass through a pipe and is done in a sequence. On the other hand WebGL is desdribed as a set of pipes, known as threads, to process every pixel in parallel. This is very convenient because the function to draw each pixel can increase its complexity without affecting its performance and this is know as GPU (Graphic Processor Unit).</p>
         <div class="flex items-center mx-auto py-2 w-full max-w-screen-md">
           <div>
             <img src="/images/cpu_pipe.png" alt="Book of Shaders CPU" />
@@ -54,7 +54,7 @@ precision highp float;
 <span class="text-gray-600">// an uniform will receive data from main script</span>
 uniform float uTime;
 
-<span class="text-gray-600">// a varying will be shared with the fragment shader</span>
+<span class="text-gray-600">// a varying will be shared with the vertex shader</span>
 varying vec4 vColor;
 
 <span class="text-gray-600">// all shaders have a main function</span>
@@ -87,7 +87,6 @@ varying vec2 vUv;
 
 void main {
   vUv = uv;
-
   vPUv = offset.xy / uTextureSize;
 
   vec3 displaced = offset;
@@ -100,7 +99,7 @@ void main {
 }
           </code></pre>
         </p>
-        <p>The fragment shader will receive the image as uniform and the position and UVs as varying variables from the vertex shader. The color of the pixel is extracted from the texture and position . To make the circle shape the the alpha value of the color will be <code>0</code> (making it transparent) if the distance of the pixel from the center is greater than <code>0.5</code>.</p>
+        <p>The fragment shader will receive the image as uniform and the position and UVs as varying variables from the vertex shader. The color of the pixel is extracted from the texture and position . To make the circle shape the the alpha value of the color will be <code>0</code> (making it transparent) if the distance of the pixel from the center is greater than <code>0.5</code>, which is the radius of the circle.</p>
         <p>
           <pre class="px-6 rounded bg-gray-800 text-sm text-gray-100 overflow-x-scroll scrolling-touch"><code>
 precision highp float;
@@ -111,20 +110,19 @@ varying vec2 vPUv;
 varying vec2 vUv;
 
 void main {
-  vec4 colA = texture2D(uTexture, vPUv);
+  vec4 originalColor = texture2D(uTexture, vPUv);
 
   float dist = 0.5 - distance(vUv, vec2(0.5));
+  originalColor.a = smoothstep(0.0, 0.3, dist);
 
-  colA.a = smoothstep(0.0, 0.3, dist);
-
-  gl_FragColor = colA;
+  gl_FragColor = originalColor;
 }
           </code></pre>
         </p>
         <div class="py-2">
           <img src="/images/result1.jpg" alt="Custom Shader Implementation" class="mx-auto" />
         </div>
-        <p>The image above is an example of the resulting canvas displayed. For now the circle shape of the particles is barely visible but this will be fixed applying a halftone pattern in the next section.</p>
+        <p>The image above is an example of the resulting canvas displayed. For now all the particles have the same size but this will be fixed by applying a halftone pattern in the next section.</p>
       </div>
       <div class="main-shadow"></div>
       <div class="nav">

@@ -3,6 +3,9 @@
     <div class="container mx-auto">
       <div class="p-6" :style="{ minHeight: 'calc(100vh - 72px)' }">
         <h1>Sound Frequency</h1>
+        <br>
+        <h2>Masterpiece Implementation</h2>
+        <p></p>
       </div>
       <div class="fixed top-0 left-0 w-full pointer-events-none" :style="{ height: 'calc(100vh - 72px)', boxShadow: 'inset 0 0 0.75rem 1rem #e2e8f0' }"></div>
       <div class="sticky bottom-0 flex justify-between items-center px-3 py-6 bg-gray-300">
