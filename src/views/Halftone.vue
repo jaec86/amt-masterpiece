@@ -7,13 +7,14 @@
         <p>
           <img src="/images/halftone_color.png" alt="Halftone Color Example" class="mx-auto max-w-sm" />
         </p>
-        <p>Usually to print a full color halftone pattern the size of the dots varies depending on the red, green, blue and black values. The image above is an example of how a full color halftone pattern can be obtained. For the masterpiece instead of using the full color of a pixel, the grayscale value will be used.</p>
+        <p>Usually to print a full color halftone pattern the size of the dots varies depending on the red, green, blue and black values. The image above is an example of how a full color halftone pattern can be obtained. For the masterpiece instead of using the full color of a pixel, the grayscale value will be used. The brighter the pixel is, the larger the particle is.</p>
         <p>There are three common methods to compute the grayscale value: lightness, average and luminosity. The three methods produce a very similar result, even though the luminosity method is proven to work best overall, so this will be the method used in the masterpiece. The formula for the luminosity method is <code>0.21R + 0.72G + 0.07B</code>.</p>
         <br>
         <h2>Masterpiece Implementation</h2>
         <p>To implement a halftone pattern to the particle system only the fragment shader needs to be updated. The first thing to do is get the grayscale value of the pixel based on the texture position. Then instead of assigning the color of the pixel, a new color is set with the green, red, and blue value set as the grayscale. Finally the alpha value of this new color will be also based on the distance from the center, but this time the radius will be <code>0.5*gray</code>.</p>
         <p>
           <pre class="px-6 rounded bg-gray-800 text-sm text-gray-100 overflow-x-scroll scrolling-touch"><code>
+<span class="text-gray-600">// fragment shader</span>
 precision highp float;
 
 uniform sampler2D uTexture;

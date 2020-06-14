@@ -13,14 +13,25 @@
         <br>
         <br>
         <br>
-        <h2>References and Credits</h2>
-        <p>Previous pieces developed during the past workshops of the course served as inspiration and are listed below:</p>
+        <h2>References</h2>
+        <p>The main sites and articles referenced on this document are listed below:</p>
+        <p class="flex pl-6"><span style="min-width: 1.5rem">1.</span><span><a href="https://thebookofshaders.com/" target="_blank">The Book of Shaders</a>: Step-by-step guide through the abstract and complex universe of fragment shaders</span></p>
+        <p class="flex pl-6"><span style="min-width: 1.5rem">2.</span><span><a href="https://webglfundamentals.org/" target="_blank">WebGL Fundamentals</a>: A set of up to date articles that teach WebGL from basic principles</span></p>
+        <p class="flex pl-6"><span style="min-width: 1.5rem">3.</span><span><a href="https://www.teachmeaudio.com/" target="_blank">Teach Me Audio</a>: No nonsense guide to success in Audio Production</span></p>
+        <p class="flex pl-6"><span style="min-width: 1.5rem">4.</span><span><a href="https://www.khanacademy.org/" target="_blank">Khan Academy</a>: A free, world‑class education for anyone, anywhere</span></p>
+        <br>
+        <p>Previous pieces developed during the past workshops of the course also served as inspiration and are listed below:</p>
         <p class="flex pl-6"><span style="min-width: 1.5rem">1.</span><span>Gemotery: Texture Projection (<a href="https://jaec86.github.io/amt-workshop1/" target="_blank">demo</a> and <a href="https://github.com/jaec86/amt-workshop1" target="_blank">code</a>)</span></p>
         <p class="flex pl-6"><span style="min-width: 1.5rem">2.</span><span>Symmetry: Kaleidoscope (<a href="https://jaec86.github.io/amt-workshop2/" target="_blank">demo</a> and <a href="https://github.com/jaec86/amt-workshop2" target="_blank">code</a>)</span></p>
         <p class="flex pl-6"><span style="min-width: 1.5rem">3.</span><span>Rules and Pattern: Voronoi 3D Object (<a href="https://jaec86.github.io/amt-workshop3/" target="_blank">demo</a> and <a href="https://github.com/jaec86/amt-workshop3" target="_blank">code</a>)</span></p>
         <p class="flex pl-6"><span style="min-width: 1.5rem">4.</span><span>Motion: Verlet Integration Motion (<a href="https://jaec86.github.io/amt-workshop4/" target="_blank">demo</a> and <a href="https://github.com/jaec86/amt-workshop4" target="_blank">code</a>)</span></p>
         <p class="flex pl-6"><span style="min-width: 1.5rem">5.</span><span>Sound: Generative Melodies and Webcam Audio Visualizer (<a href="https://jaec86.github.io/amt-workshop5/" target="_blank">demo</a> and <a href="https://github.com/jaec86/amt-workshop5" target="_blank">code</a>)</span></p>
-        <p>This project uses a javascript package called <a href="https://threejs.org/" target="_blank" class="font-bold">Three.js</a>, which simplifies the manipulation of 2D and 3D graphics on a web browser. Also the website is developed with a frontend framework called <a href="https://vuejs.org/" target="_blank" class="font-bold">Vue.js</a> and a CSS utility-first framework called <a href="https://tailwindcss.com/" target="_blank" class="font-bold">Tailwind</a>.</p>
+        <br>
+        <p>The masterpiece was developed as a Javascript project with the help of the following tools:</p>
+        <p class="flex pl-6"><span style="min-width: 1.5rem">1.</span><span><a href="https://threejs.org/" target="_blank">ThreeJs</a>: Easy to use, lightweight, 3D library with a default WebGL renderer</span></p>
+        <p class="flex pl-6"><span style="min-width: 1.5rem">2.</span><span><a href="https://github.com/glslify/glslify" target="_blank">Glslify</a>: A node.js-style module system for GLSL</span></p>
+        <p class="flex pl-6"><span style="min-width: 1.5rem">3.</span><span><a href="https://vuejs.org/" target="_blank">VueJs</a>: A progressive framework for building user interfaces</span></p>
+        <p class="flex pl-6"><span style="min-width: 1.5rem">4.</span><span><a href="https://tailwindcss.com/" target="_blank">TailwindCSS</a>: A highly customizable, low-level CSS framework</span></p>
       </div>
       <div class="main-shadow"></div>
       <div class="nav">

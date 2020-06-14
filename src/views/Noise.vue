@@ -27,6 +27,7 @@ float noise(float x) {
         <p>In the vertex shader the <code>x</code> and <code>y</code> coordinates are updated to include some noise, making the particles move slightly from its original position. The <code>z</code> coordinate is also updated with some 2D noise but instead using the time. Manipulating slightly the <code>z</code> value with the grayscale value of the pixel will also give the illusion of scaling of the particle size. <a href="https://github.com/glslify/glslify" target="_blank">Glslify</a> library is used to import the simplex 2D noise function into the shaders.</p>
         <p>
           <pre class="px-6 rounded bg-gray-800 text-sm text-gray-100 overflow-x-scroll scrolling-touch"><code>
+<span class="text-gray-600">// vertex shader</span>
 precision highp float;
 
 attribute vec2 uv;
@@ -83,6 +84,7 @@ void main {
         <p>Because the size of the particle is set on the vertex shader it can be removed from the fragment shader now. To get a more interesting result, the shape of the circle can include some noise. This will result in a dynamic shape of the particle. The function used is a modified version of one of the examples from the <a href="https://thebookofshaders.com/" target="_blank">Book of Shaders</a>.</p>
         <p>
           <pre class="px-6 rounded bg-gray-800 text-sm text-gray-100 overflow-x-scroll scrolling-touch"><code>
+<span class="text-gray-600">// fragment shader</span>
 precision highp float;
 
 uniform sampler2D uTexture;

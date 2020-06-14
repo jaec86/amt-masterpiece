@@ -3,9 +3,87 @@
     <div class="container mx-auto">
       <div class="p-6" :style="{ minHeight: 'calc(100vh - 72px)' }">
         <h1>Sound Frequency</h1>
+        <p>When a sound is produced it makes the molecules in the air vibrate. When these vibrations hit the human ear, the ear also vibrates with the same frequency, and finally the brain transforms the vibrations in the air into electrical signal that are interpreted as sound. The frequency refers to the number of times per second a sound wave cycle repeats. The wave patterns of the periodic functions of sine and cosine are normally used to represent these sound waves.</p>
+        <p>The audio spectrum represents the range of frequencies that the average human can hear. Audio frequency is measured in hertz (Hz) units and the audible spectrum of an average human is 20Hz to 20,000Hz. This audio spectrum can be divided into seven different frequency bands, where each band can have a different effect on the total sound. The seven frequency bands are:</p>
+        <p class="flex pl-6"><span style="min-width: 1.5rem">1.</span>Sub-bass: 20Hz to 60Hz</p>
+        <p class="flex pl-6"><span style="min-width: 1.5rem">2.</span>Bass: 60Hz to 250Hz</p>
+        <p class="flex pl-6"><span style="min-width: 1.5rem">3.</span>Lower Midrange: 250Hz to 500Hz</p>
+        <p class="flex pl-6"><span style="min-width: 1.5rem">4.</span>Midrange: 500Hz to 2kHz</p>
+        <p class="flex pl-6"><span style="min-width: 1.5rem">5.</span>Higher Midrange: 2kHz to 4kHz</p>
+        <p class="flex pl-6"><span style="min-width: 1.5rem">6.</span>Presence: 4kHz to 6kHz</p>
+        <p class="flex pl-6"><span style="min-width: 1.5rem">7.</span>Brilliance: 6kHz to 20kHz</p>
+        <p>These ranges can be also be simplified, often on budget equipment or through basic software control. Sub-bass and Bass are grouped together as bass. It is possible to group the midranges together to be just midrange, or sometimes the midrange is left out, with only lower and higher midranges being referenced. The Presence and Brilliance ranges can be grouped together and just called Treble.</p>
         <br>
         <h2>Masterpiece Implementation</h2>
-        <p></p>
+        With the web audio API is possible to extract the frequency data from an audio playing on real time. Using the frequency ranges described before the bands frequency can be isolated. The vertex shader now will include some new uniform variables that are passed from the main script. These new unforms are the bass, midrange and treble frequencies that are updated at every frame. Now the z index of the particles will be updated with the treble, midrange or bass frequency depending on the grayscale value.
+        <p>
+          <pre class="px-6 rounded bg-gray-800 text-sm text-gray-100 overflow-x-scroll scrolling-touch"><code>
+<span class="text-gray-600">// vertex shader</span>
+precision highp float;
+
+attribute vec2 uv;
+attribute vec3 position;
+attribute vec3 offset;
+attribute float pindex;
+
+uniform mat4 modelViewMatrix;
+uniform mat4 projectionMatrix;
+
+uniform vec2 uTextureSize;
+uniform float uSize;
+uniform float uTime;
+uniform float uRandom;
+uniform float uDepth;
+uniform float uBass;
+uniform float uMid;
+uniform float uTreble;
+
+varying vec2 vPUv;
+varying vec2 vUv;
+
+#pragma glslify: snoise2 = require(glsl-noise/simplex/2d)
+
+float random(float n) {
+  return fract(sin(n) * 43758.5453123);
+}
+
+void main {
+  vUv = uv;
+  vPUv = offset.xy / uTextureSize;
+
+  vec4 originalColor = texture2D(uTexture, vPUv);
+  float gray = originalColor.r * 0.21 + originalColor.g * 0.71 + originalColor.b * 0.07;
+
+  vec3 displaced = offset;
+  displaced.xy += snoise2(vec2(displaced)) * 2.0;
+  displaced.xy -= uTextureSize * 0.5;
+
+  vec4 mvPosition = modelViewMatrix * vec4(displaced, 1.0);
+  mvPosition.xyz += position * uSize;
+
+  float randomZ = random(pindex) + snoise2(vec2(pindex * 0.1, uTime * 0.1));
+  displaced.z += randomZ * random(pindex) * 2.0 * uDepth;
+
+  if (gray > 0.75) {
+    displaced.z += uTreble * 100.0;
+  } else if (gray > 0.4) {
+    displaced.z += uMid * 100.0;
+  } else {
+    displaced.z += uBass * 100.0;
+  }
+
+  float pSize = snoise2(vec2(uTime, pindex) * 0.5) + 2.0;
+  pSize *= max(gray, 0.2);
+  pSize *= uSize;
+
+  vec4 mvPosition = modelViewMatrix * vec4(displaced, 1.0);
+  mvPosition.xyz += position * pSize;
+
+  gl_Position = vec4(projectionMatrix * mvPosition);
+}
+          </code></pre>
+        </p>
+        <p>The final result of the masterpiece can be seen on the live demo in the next section. On the live demo section the movie poster and soundtrack can change bu clicking anywhere on the canvas.</p>
       </div>
       <div class="fixed top-0 left-0 w-full pointer-events-none" :style="{ height: 'calc(100vh - 72px)', boxShadow: 'inset 0 0 0.75rem 1rem #e2e8f0' }"></div>
       <div class="sticky bottom-0 flex justify-between items-center px-3 py-6 bg-gray-300">

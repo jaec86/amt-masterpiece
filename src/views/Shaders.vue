@@ -70,6 +70,7 @@ void main {
         <p>The vertex shader will receive the UVs, which are markers to map which pixels on the texture corresponds to which vertex. The texture will be the image itself and its size is passed to the shader as uniform. The modelViewMatrix and projectionMatrix are uniforms created by Three, which are useful for transformations. The product of the position, modelViewMatrix and projectionMatrix will position the pixel in the correct perspective.</p>
         <p>
           <pre class="px-6 rounded bg-gray-800 text-sm text-gray-100 overflow-x-scroll scrolling-touch"><code>
+<span class="text-gray-600">// vertex shader</span>
 precision highp float;
 
 attribute vec2 uv;
@@ -99,9 +100,10 @@ void main {
 }
           </code></pre>
         </p>
-        <p>The fragment shader will receive the image as uniform and the position and UVs as varying variables from the vertex shader. The color of the pixel is extracted from the texture and position . To make the circle shape the the alpha value of the color will be <code>0</code> (making it transparent) if the distance of the pixel from the center is greater than <code>0.5</code>, which is the radius of the circle.</p>
+        <p>The fragment shader will receive the image as uniform and the position and UVs as varying variables from the vertex shader. The color of the pixel is extracted from the texture and position. To make the circle shape the the alpha value of the color will be <code>0</code> (making it transparent) if the distance of the pixel from the center is greater than <code>0.5</code>, which is the radius of the circle.</p>
         <p>
           <pre class="px-6 rounded bg-gray-800 text-sm text-gray-100 overflow-x-scroll scrolling-touch"><code>
+<span class="text-gray-600">// fragment shader</span>
 precision highp float;
 
 uniform sampler2D uTexture;
